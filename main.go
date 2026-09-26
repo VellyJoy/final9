@@ -32,7 +32,7 @@ func maximum(data []int) int {
 	if len(data) == 0 {
 		return 0
 	}
-	max := 0
+	max := data[0]
 	for _, value := range data {
 		if value > max {
 			max = value
@@ -49,7 +49,7 @@ func maxChunks(data []int) int {
 	}
 	var wg sync.WaitGroup
 	chunkSize := (len(data) + CHUNKS - 1) / CHUNKS
-	maxValues := make([]int, CHUNKS)
+	maxValues := make([]int, min(len(data), CHUNKS))
 	for i := 0; i < CHUNKS; i++ {
 		start := i * chunkSize
 		end := start + chunkSize
